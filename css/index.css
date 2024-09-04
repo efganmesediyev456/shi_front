@@ -745,6 +745,8 @@ header .header_content {
 }
 .partners .container .item img {
   object-fit: contain;
+  filter: grayscale(100%);
+  transition: all ease 0.5s;
 }
 @media (max-width: 900px) {
   .partners .container .item {
@@ -755,6 +757,9 @@ header .header_content {
     width: 100%;
     height: 100%;
   }
+}
+.partners .container .item:hover img {
+  filter: grayscale(0%);
 }
 
 .branded_experiences {
@@ -935,6 +940,7 @@ header .header_content {
   gap: 16px;
   top: 16px;
   left: 16px;
+  z-index: 999999;
 }
 @media (max-width: 900px) {
   .turing_business .tags {
@@ -1023,10 +1029,11 @@ header .header_content {
   font-family: Helvetica Neue;
   font-size: 72px;
   font-weight: 400;
-  line-height: 125%;
+  line-height: 94%;
   letter-spacing: 0%;
   text-align: left;
   color: rgba(249, 249, 249, 0.4);
+  display: block !important;
 }
 @media (max-width: 900px) {
   .lovable_products .container .item_title h1, .lovable_products .container .item_title h2 {
@@ -1036,6 +1043,7 @@ header .header_content {
     line-height: 120%;
     letter-spacing: 0%;
     text-align: left;
+    display: inline-block !important;
   }
 }
 .lovable_products .container .item_title h2 {
@@ -2167,16 +2175,35 @@ span.line {
 }
 
 .see_button {
+  transform: translateY(-20px);
   position: relative;
   overflow: hidden;
   width: 120px;
   height: 48px;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 16, 17);
+  border-radius: 4px;
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+}
+.see_button button {
+  border: unset;
+}
+.see_button a {
+  color: rgb(0, 16, 17);
+  font-family: Helvetica Neue;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 .see_button button {
   width: 100%;
   height: 100%;
 }
 .see_button span {
+  transform: scale(0);
   position: absolute;
   width: 120px;
   height: 120px;
@@ -2190,24 +2217,80 @@ span.line {
   left: -60px;
 }
 .see_button .two {
-  top: -22px;
-  right: -27px;
+  top: -62px;
+  right: -60px;
 }
 .see_button .three {
-  bottom: -61px;
-  left: 18%;
-  width: 84%;
+  bottom: -110px;
+  right: 1px;
+  left: auto;
 }
 .see_button:hover .one {
-  transform: scale(3);
+  transform: scale(1.5);
+}
+.see_button a {
+  transition: all ease 0.5s;
+}
+.see_button:hover a {
+  color: white;
+  position: relative;
+  z-index: 999;
 }
 .see_button:hover .two {
-  transform: scale(3);
+  transform: scale(1.5);
 }
 .see_button:hover .three {
-  transform: scale(3);
+  transform: scale(1.5);
 }
 .see_button .button {
   padding: 6px 30px;
   text-align: center;
+}
+
+.dark.see_button span {
+  background: white;
+}
+
+.dark.see_button button {
+  box-sizing: border-box;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 4px;
+  background: rgb(0, 16, 17);
+}
+.dark.see_button button a {
+  color: white;
+}
+
+.dark.see_button:hover a {
+  color: black;
+}
+
+.hoverimage {
+  display: none;
+}
+
+@keyframes animateshow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animatehide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.turing_business .img_area:hover .hoverimage {
+  display: block;
+  animation: animateshow 1s linear forwards;
+}
+
+.turing_business .img_area:hover .hoverimage ~ img {
+  display: none;
+  animation: animatehide 1s linear forwards;
 }
